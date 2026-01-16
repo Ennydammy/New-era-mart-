@@ -1,0 +1,56 @@
+body {
+    font-family: Arial,sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #fffa;
+    color: #333;
+}
+header {
+    background-color: #1f3c88;
+    color: white;
+    text-align: center;
+    padding: 40px 20px;
+}
+section {
+    max-width: 900px;
+    margin: auto;
+    padding: 30px 20px;
+
+}
+h2 {
+    color: #1f3c88;
+}
+ul {
+    list-style-type: square;
+    padding-left: 20px;
+}
+.button {
+    display: inline-block;
+    margin-top: 15px;
+    padding: 12px 25px;
+    background-color: #1f3c88;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+}
+footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 15px;
+}
+.products {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+.products {
+    width: 150%;
+    text-align: center;
+}
+.products img {
+    width: 100px;
+    height: auto;
+    border-radius: 8px;
+
+}

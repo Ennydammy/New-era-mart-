@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>NEW ERA MART</title>
+        <link rel="stylesheet" href="style.css">
+        <meta name="viewpoint" content="width=device-width, initial-scale=1.0"> 
+       </head>
+    <body>
+        <script>
+const quantities = document.querySelectorAll(".product-quantity");
+const totalPriceSpan = document.getElementById("totalPrice");
+
+// Update total price dynamically
+function updateTotal() {
+    let total = 0;
+    quantities.forEach(input => {
+        const price = parseInt(input.dataset.price);
+        const qty = parseInt(input.value) || 0;
+        total += price * qty;
+    });
+    totalPriceSpan.textContent = total;
+}
+
+// Listen for changes
+quantities.forEach(input => input.addEventListener("input", updateTotal));
+
+// WhatsApp order
+document.getElementById("orderForm").addEventListener("submit", function(e) {
+    e.preventDefault();
+
+    const name = document.getElementById("name").value;
+
+    let message = Hello, my name is ${name}. I would like to order:\n;
+
+    let anyProduct = false;
+
+    quantities.forEach(input => {
+        const qty = parseInt(input.value) || 0;
+        if (qty > 0) {
+            const productName = input.dataset.name;
+            const price = input.dataset.price;
+            message += - ${productName}: ${qty} x ₦${price}\n;
+            anyProduct = true;
+        }
+    });
+
+    if (!anyProduct) {
+        alert("Please select at least one product!");
+        return;
+    }
+
+    message += Total: ₦${totalPriceSpan.textContent};
+
+    const phone = "08026178511"; // Replace with your WhatsApp number
+    const url = "https://wa.me/" + phone + "?text=" + encodeURIComponent(message);
+    window.open(url, "_blank");
+});
+</script>
+        <nav>
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">contact</a>
+    </nav>
+        <header>
+            <h1>NEW ERA MART</h1>
+            <P>Your everyday choice for quality products</P>
+        </header>
+        <section>
+            <h2>About New Era Mart</h2>
+            <p>
+                New Era Mart is your Neighborhood mart that provides your daily essentials,provisions,snacks and drinks at affordable prices.
+                We are committed to quality service and customer satisfaction.
+            </p>
+        </section>
+        <section>
+            <h2>What we sell</h2>
+            <div class="product">
+                <img src="image/provision.jpg.jpeg" alt="Provision">
+                <p>provision & essentials</p>
+            </div>
+            <div class="product">
+                <img src="image/drinks.jpg.jpeg" alt="Drinks">
+                <p>drinks</p>
+            </div>
+            <div class="product">
+                <img src="image/snacks.jpg.jpeg" alt="Snacks">
+                <p>snacks & biscuits</p>
+            </div>
+            <div class="product">
+                <img src="image/frozenfoods.jpg.jpeg" alt="Frozenfoods">
+                <p>Frozen foods</p>
+            </div>
+            </div>
+        </section>
+        <section>
+            <h2>Contact Us</h2>
+            <p>Phone: 08026178511,07069262697</p>
+            <p>Instagram: @NeweraMart</p>
+            <h2>Order from WhatsApp</h2>
+    <form id="orderForm">
+
+        <label for="name">Your Name:</label><br>
+        <input type="text" id="name" name="name" placeholder="Enter your name" required><br><br>
+
+        <h3>Select Products:</h3>
+        <div class="product-item">
+            <img src="images/snacks.jpg" alt="Snacks">
+            <label>Snacks & Biscuits - ₦500</label>
+            <input type="number" class="product-quantity" data-name="Snacks & Biscuits" data-price="500" min="0" value="0">
+        </div>
+
+        <div class="product-item">
+            <img src="images/drinks.jpg" alt="Drinks">
+            <label>Soft Drinks & Water - ₦200</label>
+            <input type="number" class="product-quantity" data-name="Soft Drinks & Water" data-price="200" min="0" value="0">
+        </div>
+
+        <div class="product-item">
+            <img src="images/provisions.jpg" alt="Provisions">
+            <label>Provisions - ₦1000</label>
+            <input type="number" class="product-quantity" data-name="Provisions" data-price="1000" min="0" value="0">
+        </div>
+
+        <div class="product-item">
+            <img src="images/essentials.jpg" alt="Essentials">
+            <label>Household Essentials - ₦1500</label>
+            <input type="number" class="product-quantity" data-name="Household Essentials" data-price="1500" min="0" value="0">
+        </div>
+
+        <p>Total Price: ₦<span id="totalPrice">0</span></p>
+
+        <button type="submit" class="button">Send Order on WhatsApp</button>
+    </form>
+        </section>
+        <section>
+            <h3>Our Location</h3>
+            <iframe
+            src=""
+            width="100%"
+            height="300"
+            style="border:0;"
+            allowfullscreen loading="lazy">
+        </iframe>
+        </section>
+        <footer>
+            <p> 2026 New Era Mart. All rights reserved.</p>
+        </footer>
+    </body>
+    
+</html>
