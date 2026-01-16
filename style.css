@@ -1,29 +1,77 @@
+
 body {
-    font-family: Arial,sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #fffa;
+    background-color: rgba(221, 230, 225, 0.667);
     color: #333;
+    position: relative;
 }
+
+/* ===== Site Watermark ===== */
+body::before {
+    content: "";
+    background: url('image/logo4.png') no-repeat center;
+    background-size: 300px;
+    opacity: 0.10; /* very light watermark */
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    pointer-events: none; /* allows clicks through watermark */
+}
+
+/* ===== Header ===== */
 header {
-    background-color: #1f3c88;
-    color: white;
+    background-color: #0f6925; /* green top bar */
     text-align: center;
     padding: 40px 20px;
+    position: relative;
+    z-index: 1; /* above watermark */
 }
+
+#logo {
+    width: 150px; /* adjust as needed */
+    height: auto;
+    display: block;
+    margin: 0 auto 10px auto;
+}
+
+header h1,
+header p {
+    color: white;
+    margin: 0;
+}
+
+/* ===== Sections ===== */
 section {
     max-width: 900px;
     margin: auto;
     padding: 30px 20px;
+}
 
-}
 h2 {
-    color: #1f3c88;
+    color: #020915;
+    font-family: 'montserrat', sans-serif;
+    font-weight: 700;
 }
+
+h3 {
+    margin-bottom: 10px;
+}
+
+h4 {
+    margin: 10px 0 5px 0;
+}
+
 ul {
     list-style-type: square;
     padding-left: 20px;
 }
+
+/* ===== Buttons ===== */
 .button {
     display: inline-block;
     margin-top: 15px;
@@ -32,25 +80,163 @@ ul {
     color: white;
     text-decoration: none;
     border-radius: 5px;
+    cursor: pointer;
 }
+
+/* ===== Footer ===== */
 footer {
     background-color: #333;
     color: white;
     text-align: center;
     padding: 15px;
 }
-.products {
-    display: flex;
-    gap: 20px;
-    flex-wrap: wrap;
-}
-.products {
-    width: 150%;
+
+/* ===== Navigation ===== */
+nav {
+    background-color: #eee;
+    padding: 10px;
     text-align: center;
 }
-.products img {
-    width: 100px;
-    height: auto;
-    border-radius: 8px;
 
+nav a {
+    margin: 0 10px;
+    text-decoration: none;
+    color: #1f3c88;
+    font-weight: bold;
+}
+
+/* ===== Product Listing (What we sell) ===== */
+.product {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 20px;
+    text-align: center;
+}
+
+.product img {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 8px;
+    display: block;
+    margin: 0 auto 10px;
+}
+
+/* ===== Order from WhatsApp Products ===== */
+.order-products {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: space-between;
+}
+
+.order-products .product-item {
+    flex: 1 1 calc(25% - 20px);
+    max-width: 250px;
+    border: 1px solid #ddd;
+    padding: 15px;
+    border-radius: 8px;
+    background-color: #fff;
+    text-align: center;
+}
+
+.order-products .product-item img {
+    width: 120px;
+    height: 120px;
+    object-fit: cover;
+    border-radius: 8px;
+    display: block;
+    margin: 0 auto 10px;
+}
+
+/* ===== Variety Rows ===== */
+.product-item .variety {
+    display: flex;
+    flex-wrap: wrap; /* allow wrapping for small screens */
+    align-items: center;
+    gap: 5px;
+    margin-bottom: 10px;
+    justify-content: center;
+}
+
+.product-item .variety select,
+.product-item .variety input {
+    padding: 5px;
+    font-size: 14px;
+}
+
+.product-item .variety .product-quantity,
+.product-item .variety .pack {
+    width: 60px;
+    text-align: center;
+}
+
+/* ===== Add/Remove Buttons ===== */
+.product-item .variety .buttons-container {
+    display: flex;
+    gap: 5px;
+}
+
+.add-another, .remove-item {
+    padding: 5px 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 12px;
+}
+
+.add-another {
+    background-color: #0b9143;
+    color: white;
+}
+
+.add-another:hover {
+    background-color: #057a2d;
+}
+
+.remove-item {
+    background-color: #c0392b;
+    color: white;
+}
+
+.remove-item:hover {
+    background-color: #96281b;
+}
+
+/* Align Add Another & Remove buttons neatly */
+.product-item .variety .buttons-container button {
+    flex: 1;
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 900px) {
+    .order-products {
+        justify-content: center;
+    }
+    .order-products .product-item {
+        flex: 1 1 calc(50% - 20px);
+        max-width: none;
+    }
+}
+
+@media (max-width: 600px) {
+    .order-products {
+        flex-direction: column;
+        gap: 15px;
+    }
+    .product-item {
+        flex: 1 1 100%;
+    }
+    .product-item img {
+        width: 100px;
+        height: 100px;
+    }
+    .product-item .variety select,
+    .product-item .variety input,
+    form input,
+    form select,
+    form button {
+        width: 100%;
+        font-size: 16px;
+    }
 }
