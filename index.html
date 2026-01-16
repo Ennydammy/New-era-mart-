@@ -1,151 +1,325 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <title>NEW ERA MART</title>
-        <link rel="stylesheet" href="style.css">
-        <meta name="viewpoint" content="width=device-width, initial-scale=1.0"> 
-       </head>
-    <body>
-        <script>
-const quantities = document.querySelectorAll(".product-quantity");
-const totalPriceSpan = document.getElementById("totalPrice");
+<head>
+<meta charset="UTF-8">
+<title>NEW ERA MART</title>
+<link rel="stylesheet" href="style.css">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap" rel="stylesheet">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+.order-products { display: flex; flex-wrap: wrap; gap: 20px; }
+.product-item { border: 1px solid #ddd; border-radius: 8px; padding: 10px; width: 100%; max-width: 400px; background: #fff; text-align:center; }
+.product-item img { width: 100px; height: 100px; object-fit: cover; }
+.variety { display: flex; gap: 10px; margin-bottom: 5px; align-items: center; flex-wrap: wrap; justify-content: center; }
+.variety input, .variety select { padding: 5px; }
+.add-another, .remove-item { padding: 5px 10px; cursor: pointer; border: none; border-radius: 5px; }
+.add-another { background-color: #0b9143; color: white; }
+.remove-item { background-color: #c0392b; color: white; }
+.add-another:hover { background-color: #057a2d; }
+.remove-item:hover { background-color: #96281b; }
+.variety .pack { width: 60px; }
+.buttons-container { display: flex; gap: 5px; }
+</style>
+</head>
+<body>
 
-// Update total price dynamically
+<nav>
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+</nav>
+
+<header>
+    <header>
+    <img src="image/logo4.png" alt="NEW ERA MART Logo" id="logo">
+    <p>Your everyday choice for quality products</p>
+
+</header>
+
+<section>
+    <h2>Welcome to New Era Mart</h2>
+    <p>
+        New Era Mart is your Neighborhood mart that provides your daily essentials, provisions, snacks, and drinks at affordable prices.
+        We do walk-in and delivery to your doorstep.
+    </p>
+</section>
+
+<section>
+<h2>What we sell</h2>
+<div class="product">
+    <div class="product-item"><img src="image/provision.jpg" alt="Provision"><p>Provision & Essentials</p></div>
+    <div class="product-item"><img src="image/drinks.jpg" alt="Drinks"><p>Drinks</p></div>
+    <div class="product-item"><img src="image/snacks.jpg" alt="Snacks"><p>Snacks & Biscuits</p></div>
+    <div class="product-item"><img src="image/frozenfoods.jpg" alt="Frozenfoods"><p>Frozen foods</p></div>
+</div>
+</section>
+
+<section>
+<h2>Order from WhatsApp</h2>
+
+<form id="orderForm">
+<label>Your Name:</label><br>
+<input type="text" id="name" required><br><br>
+
+<div class="order-products">
+
+<!-- SNACKS -->
+<div class="product-item">
+<img src="image/snacks.jpg" alt="Snacks">
+<h3>Snacks</h3>
+
+<h4>Biscuits</h4>
+<div class="varieties">
+<div class="variety">
+<select class="product-option" data-main="Snacks" data-category="Biscuits">
+<option value="">Select Biscuit</option>
+<option value="Marie" data-price="150">Marie - ₦150</option>
+<option value="Oreo" data-price="200">Oreo - ₦200</option>
+<option value="Digestive" data-price="250">Digestive - ₦250</option>
+</select>
+<input type="number" class="product-quantity" min="0" value="0" placeholder="Qty">
+<input type="number" class="pack" min="0" value="0" placeholder="Pack">
+<div class="buttons-container">
+<button type="button" class="add-another">+ Add Another</button>
+</div>
+</div>
+</div>
+
+<h4>Chocolate</h4>
+<div class="varieties">
+<div class="variety">
+<select class="product-option" data-main="Snacks" data-category="Chocolate">
+<option value="">Select Chocolate</option>
+<option value="Dairy Milk" data-price="300">Dairy Milk - ₦300</option>
+<option value="KitKat" data-price="350">KitKat - ₦350</option>
+</select>
+<input type="number" class="product-quantity" min="0" value="0" placeholder="Qty">
+<input type="number" class="pack" min="0" value="0" placeholder="Pack">
+<div class="buttons-container">
+<button type="button" class="add-another">+ Add Another</button>
+</div>
+</div>
+</div>
+
+<h4>Ice Cream</h4>
+<div class="varieties">
+<div class="variety">
+<select class="product-option" data-main="Snacks" data-category="Ice Cream">
+<option value="">Select Ice Cream</option>
+<option value="Vanilla" data-price="400">Vanilla - ₦400</option>
+<option value="Chocolate" data-price="450">Chocolate - ₦450</option>
+</select>
+<input type="number" class="product-quantity" min="0" value="0" placeholder="Qty">
+<input type="number" class="pack" min="0" value="0" placeholder="Pack">
+<div class="buttons-container">
+<button type="button" class="add-another">+ Add Another</button>
+</div>
+</div>
+</div>
+</div>
+
+<!-- DRINKS -->
+<div class="product-item">
+<img src="image/drinks.jpg" alt="Drinks">
+<h3>Drinks</h3>
+
+<h4>Soft Drinks</h4>
+<div class="varieties">
+<div class="variety">
+<select class="product-option" data-main="Drinks" data-category="Soft Drinks">
+<option value="">Select Soft Drink</option>
+<option value="Coke" data-price="250">Coke - ₦250</option>
+<option value="Fanta" data-price="250">Fanta - ₦250</option>
+<option value="Pepsi" data-price="250">Pepsi - ₦250</option>
+</select>
+<input type="number" class="product-quantity" min="0" value="0" placeholder="Qty">
+<input type="number" class="pack" min="0" value="0" placeholder="Pack">
+<div class="buttons-container">
+<button type="button" class="add-another">+ Add Another</button>
+</div>
+</div>
+</div>
+
+<h4>Juices</h4>
+<div class="varieties">
+<div class="variety">
+<select class="product-option" data-main="Drinks" data-category="Juices">
+<option value="">Select Juice</option>
+<option value="Chi Exotic" data-price="600">Chi Exotic - ₦600</option>
+<option value="Hollandia" data-price="700">Hollandia - ₦700</option>
+<option value="Chivita" data-price="650">Chivita - ₦650</option>
+</select>
+<input type="number" class="product-quantity" min="0" value="0" placeholder="Qty">
+<input type="number" class="pack" min="0" value="0" placeholder="Pack">
+<div class="buttons-container">
+<button type="button" class="add-another">+ Add Another</button>
+</div>
+</div>
+</div>
+</div>
+
+<!-- PROVISIONS -->
+<div class="product-item">
+<img src="image/provision.jpg" alt="Provisions">
+<h3>Provisions</h3>
+
+<h4>Rice</h4>
+<div class="varieties">
+<div class="variety">
+<select class="product-option" data-main="Provisions" data-category="Rice">
+<option value="">Select Rice</option>
+<option value="Mama's Pride" data-price="2000">Mama's Pride - ₦2000</option>
+<option value="Golden Penny" data-price="2500">Golden Penny - ₦2500</option>
+</select>
+<input type="number" class="product-quantity" min="0" value="0" placeholder="Qty">
+<input type="number" class="pack" min="0" value="0" placeholder="Pack">
+<div class="buttons-container">
+<button type="button" class="add-another">+ Add Another</button>
+</div>
+</div>
+</div>
+
+<h4>Noodles</h4>
+<div class="varieties">
+<div class="variety">
+<select class="product-option" data-main="Provisions" data-category="Noodles">
+<option value="">Select Noodles</option>
+<option value="Indomie" data-price="300">Indomie - ₦300</option>
+<option value="Maggi" data-price="350">Maggi - ₦350</option>
+</select>
+<input type="number" class="product-quantity" min="0" value="0" placeholder="Qty">
+<input type="number" class="pack" min="0" value="0" placeholder="Pack">
+<div class="buttons-container">
+<button type="button" class="add-another">+ Add Another</button>
+</div>
+</div>
+</div>
+</div>
+
+<!-- FROZEN FOODS -->
+<div class="product-item">
+<img src="image/frozenfoods.jpg" alt="Frozen Foods">
+<h3>Frozen Foods</h3>
+
+<h4>Chicken</h4>
+<div class="varieties">
+<div class="variety">
+<select class="product-option" data-main="Frozen Foods" data-category="Chicken">
+<option value="">Select Chicken</option>
+<option value="Whole Chicken" data-price="3500">Whole Chicken - ₦3500</option>
+<option value="Chicken Wings" data-price="1500">Chicken Wings - ₦1500</option>
+</select>
+<input type="number" class="product-quantity" min="0" value="0" placeholder="Qty">
+<input type="number" class="pack" min="0" value="0" placeholder="Pack">
+<div class="buttons-container">
+<button type="button" class="add-another">+ Add Another</button>
+</div>
+</div>
+</div>
+
+<h4>Fish</h4>
+<div class="varieties">
+<div class="variety">
+<select class="product-option" data-main="Frozen Foods" data-category="Fish">
+<option value="">Select Fish</option>
+<option value="Tilapia" data-price="2500">Tilapia - ₦2500</option>
+<option value="Catfish" data-price="3000">Catfish - ₦3000</option>
+</select>
+<input type="number" class="product-quantity" min="0" value="0" placeholder="Qty">
+<input type="number" class="pack" min="0" value="0" placeholder="Pack">
+<div class="buttons-container">
+<button type="button" class="add-another">+ Add Another</button>
+</div>
+</div>
+</div>
+</div>
+
+</div> <!-- end order-products -->
+
+<p><strong>Total:</strong> ₦<span id="totalPrice">0</span></p>
+<button type="submit" class="button">Send Order on WhatsApp</button>
+</form>
+</section>
+
+<footer>
+<p>2026 New Era Mart. All rights reserved.</p>
+</footer>
+
+<script>
+const form = document.getElementById("orderForm");
+const totalSpan = document.getElementById("totalPrice");
+
+// Update total
 function updateTotal() {
     let total = 0;
-    quantities.forEach(input => {
-        const price = parseInt(input.dataset.price);
-        const qty = parseInt(input.value) || 0;
-        total += price * qty;
+    document.querySelectorAll(".variety").forEach(v => {
+        const select = v.querySelector(".product-option");
+        const qty = parseInt(v.querySelector(".product-quantity").value) || 0;
+        const pack = parseInt(v.querySelector(".pack")?.value || 0);
+        const price = parseInt(select.selectedOptions[0]?.dataset.price || 0);
+        total += (qty + pack) * price;
     });
-    totalPriceSpan.textContent = total;
+    totalSpan.textContent = total;
 }
 
-// Listen for changes
-quantities.forEach(input => input.addEventListener("input", updateTotal));
+// Attach listeners
+function attachListeners(container) {
+    container.querySelectorAll(".product-quantity, .pack").forEach(input => input.addEventListener("input", updateTotal));
+    container.querySelectorAll(".product-option").forEach(select => select.addEventListener("change", updateTotal));
 
-// WhatsApp order
-document.getElementById("orderForm").addEventListener("submit", function(e) {
+    // Add Another
+    container.querySelectorAll(".add-another").forEach(btn => {
+        btn.addEventListener("click", () => {
+            const row = btn.closest(".variety");
+            const parent = row.parentElement;
+            const clone = row.cloneNode(true);
+
+            clone.querySelector(".product-quantity").value = 0;
+            clone.querySelector(".pack").value = 0;
+            clone.querySelector(".product-option").selectedIndex = 0;
+
+            // Only cloned rows get Remove button
+            const removeBtn = document.createElement("button");
+            removeBtn.type = "button";
+            removeBtn.className = "remove-item";
+            removeBtn.textContent = "Remove";
+            removeBtn.addEventListener("click", () => {
+                clone.remove();
+                updateTotal();
+            });
+            clone.querySelector(".buttons-container").appendChild(removeBtn);
+
+            parent.appendChild(clone);
+            attachListeners(parent);
+        });
+    });
+}
+
+attachListeners(document);
+updateTotal();
+
+// WhatsApp submit
+form.addEventListener("submit", e => {
     e.preventDefault();
+    const name = document.getElementById("name").value.trim();
+    let message = `Hello New Era Mart, my name is ${name}. I would like to order:\n`;
 
-    const name = document.getElementById("name").value;
-
-    let message = Hello, my name is ${name}. I would like to order:\n;
-
-    let anyProduct = false;
-
-    quantities.forEach(input => {
-        const qty = parseInt(input.value) || 0;
-        if (qty > 0) {
-            const productName = input.dataset.name;
-            const price = input.dataset.price;
-            message += - ${productName}: ${qty} x ₦${price}\n;
-            anyProduct = true;
+    document.querySelectorAll(".variety").forEach(v => {
+        const select = v.querySelector(".product-option");
+        const qty = parseInt(v.querySelector(".product-quantity").value) || 0;
+        const pack = parseInt(v.querySelector(".pack")?.value || 0);
+        const option = select.value;
+        const price = parseInt(select.selectedOptions[0]?.dataset.price || 0);
+        if ((qty + pack) > 0 && option !== "") {
+            message += `- ${select.dataset.main} (${select.dataset.category}) - ${option} x${qty} units +${pack} packs = ₦${(qty+pack)*price}\n`;
         }
     });
 
-    if (!anyProduct) {
-        alert("Please select at least one product!");
-        return;
-    }
-
-    message += Total: ₦${totalPriceSpan.textContent};
-
-    const phone = "08026178511"; // Replace with your WhatsApp number
-    const url = "https://wa.me/" + phone + "?text=" + encodeURIComponent(message);
-    window.open(url, "_blank");
+    message += `\nTotal: ₦${totalSpan.textContent}`;
+    const phone = "2348026178511";
+    window.open(`https://wa.me/${phone}?text=${encodeURIComponent(message)}`, "_blank");
 });
 </script>
-        <nav>
-        <a href="index.html">Home</a>
-        <a href="about.html">About</a>
-        <a href="contact.html">contact</a>
-    </nav>
-        <header>
-            <h1>NEW ERA MART</h1>
-            <P>Your everyday choice for quality products</P>
-        </header>
-        <section>
-            <h2>About New Era Mart</h2>
-            <p>
-                New Era Mart is your Neighborhood mart that provides your daily essentials,provisions,snacks and drinks at affordable prices.
-                We are committed to quality service and customer satisfaction.
-            </p>
-        </section>
-        <section>
-            <h2>What we sell</h2>
-            <div class="product">
-                <img src="image/provision.jpg.jpeg" alt="Provision">
-                <p>provision & essentials</p>
-            </div>
-            <div class="product">
-                <img src="image/drinks.jpg.jpeg" alt="Drinks">
-                <p>drinks</p>
-            </div>
-            <div class="product">
-                <img src="image/snacks.jpg.jpeg" alt="Snacks">
-                <p>snacks & biscuits</p>
-            </div>
-            <div class="product">
-                <img src="image/frozenfoods.jpg.jpeg" alt="Frozenfoods">
-                <p>Frozen foods</p>
-            </div>
-            </div>
-        </section>
-        <section>
-            <h2>Contact Us</h2>
-            <p>Phone: 08026178511,07069262697</p>
-            <p>Instagram: @NeweraMart</p>
-            <h2>Order from WhatsApp</h2>
-    <form id="orderForm">
 
-        <label for="name">Your Name:</label><br>
-        <input type="text" id="name" name="name" placeholder="Enter your name" required><br><br>
-
-        <h3>Select Products:</h3>
-        <div class="product-item">
-            <img src="images/snacks.jpg" alt="Snacks">
-            <label>Snacks & Biscuits - ₦500</label>
-            <input type="number" class="product-quantity" data-name="Snacks & Biscuits" data-price="500" min="0" value="0">
-        </div>
-
-        <div class="product-item">
-            <img src="images/drinks.jpg" alt="Drinks">
-            <label>Soft Drinks & Water - ₦200</label>
-            <input type="number" class="product-quantity" data-name="Soft Drinks & Water" data-price="200" min="0" value="0">
-        </div>
-
-        <div class="product-item">
-            <img src="images/provisions.jpg" alt="Provisions">
-            <label>Provisions - ₦1000</label>
-            <input type="number" class="product-quantity" data-name="Provisions" data-price="1000" min="0" value="0">
-        </div>
-
-        <div class="product-item">
-            <img src="images/essentials.jpg" alt="Essentials">
-            <label>Household Essentials - ₦1500</label>
-            <input type="number" class="product-quantity" data-name="Household Essentials" data-price="1500" min="0" value="0">
-        </div>
-
-        <p>Total Price: ₦<span id="totalPrice">0</span></p>
-
-        <button type="submit" class="button">Send Order on WhatsApp</button>
-    </form>
-        </section>
-        <section>
-            <h3>Our Location</h3>
-            <iframe
-            src=""
-            width="100%"
-            height="300"
-            style="border:0;"
-            allowfullscreen loading="lazy">
-        </iframe>
-        </section>
-        <footer>
-            <p> 2026 New Era Mart. All rights reserved.</p>
-        </footer>
-    </body>
-    
+</body>
 </html>
