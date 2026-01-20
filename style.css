@@ -1,39 +1,37 @@
-
+/* ===== BODY & WATERMARK ===== */
 body {
     margin: 0;
     padding: 0;
     background-color: rgba(221, 230, 225, 0.667);
     color: #333;
-    position: relative;
+    position: relative; /* needed for absolute watermark */
 }
 
-/* ===== Site Watermark ===== */
 body::before {
     content: "";
     background: url('image/logo4.png') no-repeat center;
     background-size: 300px;
-    opacity: 0.10; /* very light watermark */
-    position: fixed;
+    opacity: 0.10;
+    position: absolute; /* changed from fixed */
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     width: 100%;
     height: 100%;
     z-index: 0;
-    pointer-events: none; /* allows clicks through watermark */
+    pointer-events: none;
 }
-
-/* ===== Header ===== */
+/* ===== HEADER ===== */
 header {
-    background-color: #0f6925; /* green top bar */
+    background-color: #0f6925;
     text-align: center;
     padding: 40px 20px;
     position: relative;
-    z-index: 1; /* above watermark */
+    z-index: 1;
 }
 
 #logo {
-    width: 150px; /* adjust as needed */
+    width: 150px;
     height: auto;
     display: block;
     margin: 0 auto 10px auto;
@@ -45,7 +43,7 @@ header p {
     margin: 0;
 }
 
-/* ===== Sections ===== */
+/* ===== SECTIONS ===== */
 section {
     max-width: 900px;
     margin: auto;
@@ -54,7 +52,7 @@ section {
 
 h2 {
     color: #020915;
-    font-family: 'montserrat', sans-serif;
+    font-family: 'Montserrat', sans-serif;
     font-weight: 700;
 }
 
@@ -66,32 +64,7 @@ h4 {
     margin: 10px 0 5px 0;
 }
 
-ul {
-    list-style-type: square;
-    padding-left: 20px;
-}
-
-/* ===== Buttons ===== */
-.button {
-    display: inline-block;
-    margin-top: 15px;
-    padding: 12px 25px;
-    background-color: #1f3c88;
-    color: white;
-    text-decoration: none;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-/* ===== Footer ===== */
-footer {
-    background-color: #333;
-    color: white;
-    text-align: center;
-    padding: 15px;
-}
-
-/* ===== Navigation ===== */
+/* ===== NAVIGATION ===== */
 nav {
     background-color: #eee;
     padding: 10px;
@@ -105,11 +78,29 @@ nav a {
     font-weight: bold;
 }
 
-/* ===== Product Listing (What we sell) ===== */
+/* ===== FOOTER ===== */
+footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 15px;
+}
+
+/* ===== “WHAT WE SELL” GRID ===== */
 .product {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-    gap: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 25px;
+}
+
+.product .product-item {
+    width: 150px;
+    background: #fff;
+    padding: 15px;
+    border-radius: 10px;
+    border: 1px solid #ddd;
     text-align: center;
 }
 
@@ -118,11 +109,10 @@ nav a {
     height: 150px;
     object-fit: cover;
     border-radius: 8px;
-    display: block;
-    margin: 0 auto 10px;
+    margin-bottom: 10px;
 }
 
-/* ===== Order from WhatsApp Products ===== */
+/* ===== ORDER FROM WHATSAPP GRID ===== */
 .order-products {
     display: flex;
     flex-wrap: wrap;
@@ -149,34 +139,48 @@ nav a {
     margin: 0 auto 10px;
 }
 
-/* ===== Variety Rows ===== */
+/* ===== VARIETY ROWS ===== */
 .product-item .variety {
     display: flex;
-    flex-wrap: wrap; /* allow wrapping for small screens */
+    flex-wrap: wrap;
     align-items: center;
     gap: 5px;
     margin-bottom: 10px;
     justify-content: center;
 }
 
+/* Select and input styling */
 .product-item .variety select,
 .product-item .variety input {
-    padding: 5px;
+    padding: 6px 8px;
     font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
 }
 
+/* Quantity & Pack Inputs */
 .product-item .variety .product-quantity,
 .product-item .variety .pack {
-    width: 60px;
+    width: 70px;
+    min-width: 50px;
+    text-align: center;
+    font-weight: bold;
+}
+
+/* Placeholder visible */
+.product-item .variety .product-quantity::placeholder,
+.product-item .variety .pack::placeholder {
+    color: #999;
     text-align: center;
 }
 
-/* ===== Add/Remove Buttons ===== */
+/* Buttons container */
 .product-item .variety .buttons-container {
     display: flex;
     gap: 5px;
 }
 
+/* Add/Remove Buttons */
 .add-another, .remove-item {
     padding: 5px 10px;
     border: none;
@@ -203,12 +207,24 @@ nav a {
     background-color: #96281b;
 }
 
-/* Align Add Another & Remove buttons neatly */
+/* Align Add Another & Remove buttons */
 .product-item .variety .buttons-container button {
     flex: 1;
 }
 
-/* ===== Responsive ===== */
+/* ===== BUTTON ===== */
+.button {
+    display: inline-block;
+    margin-top: 15px;
+    padding: 12px 25px;
+    background-color: #1f3c88;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/* ===== RESPONSIVE ===== */
 @media (max-width: 900px) {
     .order-products {
         justify-content: center;
@@ -238,5 +254,9 @@ nav a {
     form button {
         width: 100%;
         font-size: 16px;
+    }
+    .product .product-item {
+        width: 100%;
+        max-width: 300px;
     }
 }
