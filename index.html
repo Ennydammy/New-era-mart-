@@ -7,18 +7,21 @@
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap" rel="stylesheet">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <style>
+/* ===== PRODUCT ORDER STYLES ===== */
 .order-products { display: flex; flex-wrap: wrap; gap: 20px; }
 .product-item { border: 1px solid #ddd; border-radius: 8px; padding: 10px; width: 100%; max-width: 400px; background: #fff; text-align:center; }
 .product-item img { width: 100px; height: 100px; object-fit: cover; }
 .variety { display: flex; gap: 10px; margin-bottom: 5px; align-items: center; flex-wrap: wrap; justify-content: center; }
 .variety input, .variety select { padding: 5px; }
-.add-another, .remove-item { padding: 5px 10px; cursor: pointer; border: none; border-radius: 5px; }
+.add-another, .remove-item { padding: 5px 10px; cursor: pointer; border: none; border-radius: 5px; font-size: 12px; }
 .add-another { background-color: #0b9143; color: white; }
 .remove-item { background-color: #c0392b; color: white; }
 .add-another:hover { background-color: #057a2d; }
 .remove-item:hover { background-color: #96281b; }
-.variety .pack { width: 60px; }
+.variety .product-quantity, .variety .pack { width: 60px; text-align: center; }
 .buttons-container { display: flex; gap: 5px; }
+/* ===== LABELS FOR QTY AND PACK ===== */
+.variety label { font-size: 12px; display: flex; flex-direction: column; align-items: center; }
 </style>
 </head>
 <body>
@@ -30,18 +33,15 @@
 </nav>
 
 <header>
-    <header>
     <img src="image/logo4.png" alt="NEW ERA MART Logo" id="logo">
     <p>Your everyday choice for quality products</p>
-
 </header>
 
 <section>
-    <h2>Welcome to New Era Mart</h2>
-    <p>
-        New Era Mart is your Neighborhood mart that provides your daily essentials, provisions, snacks, and drinks at affordable prices.
-        We do walk-in and delivery to your doorstep.
-    </p>
+<h2>Welcome to New Era Mart</h2>
+<p>
+    New Era Mart is your Neighborhood mart that provides your daily essentials, provisions, snacks, drinks, and frozen foods at affordable prices. Walk-in and delivery options available.
+</p>
 </section>
 
 <section>
@@ -71,14 +71,18 @@
 <h4>Biscuits</h4>
 <div class="varieties">
 <div class="variety">
-<select class="product-option" data-main="Snacks" data-category="Biscuits">
+<select class="product-option" data-main="Snacks" data-category="Biscuits" data-pack-price="300">
 <option value="">Select Biscuit</option>
-<option value="Marie" data-price="150">Marie - ₦150</option>
-<option value="Oreo" data-price="200">Oreo - ₦200</option>
-<option value="Digestive" data-price="250">Digestive - ₦250</option>
+<option value="Marie" data-price="150" data-pack-price="300">Marie - ₦150 / pack ₦300</option>
+<option value="Oreo" data-price="200" data-pack-price="400">Oreo - ₦200 / pack ₦400</option>
+<option value="Digestive" data-price="250" data-pack-price="450">Digestive - ₦250 / pack ₦450</option>
 </select>
-<input type="number" class="product-quantity" min="0" value="0" placeholder="Qty">
-<input type="number" class="pack" min="0" value="0" placeholder="Pack">
+<label>Qty
+<input type="number" class="product-quantity" min="0" value="0">
+</label>
+<label>Pack
+<input type="number" class="pack" min="0" value="0">
+</label>
 <div class="buttons-container">
 <button type="button" class="add-another">+ Add Another</button>
 </div>
@@ -88,13 +92,18 @@
 <h4>Chocolate</h4>
 <div class="varieties">
 <div class="variety">
-<select class="product-option" data-main="Snacks" data-category="Chocolate">
+<select class="product-option" data-main="Snacks" data-category="Chocolate" data-pack-price="700">
 <option value="">Select Chocolate</option>
-<option value="Dairy Milk" data-price="300">Dairy Milk - ₦300</option>
-<option value="KitKat" data-price="350">KitKat - ₦350</option>
+<option value="Dairy Milk" data-price="300" data-pack-price="700">Dairy Milk - ₦300 / pack ₦700</option>
+<option value="KitKat" data-price="350" data-pack-price="800">KitKat - ₦350 / pack ₦800</option>
+<option value="Snickers" data-price="350" data-pack-price="850">Snickers - ₦350 / pack ₦850</option>
 </select>
-<input type="number" class="product-quantity" min="0" value="0" placeholder="Qty">
-<input type="number" class="pack" min="0" value="0" placeholder="Pack">
+<label>Qty
+<input type="number" class="product-quantity" min="0" value="0">
+</label>
+<label>Pack
+<input type="number" class="pack" min="0" value="0">
+</label>
 <div class="buttons-container">
 <button type="button" class="add-another">+ Add Another</button>
 </div>
@@ -104,13 +113,17 @@
 <h4>Ice Cream</h4>
 <div class="varieties">
 <div class="variety">
-<select class="product-option" data-main="Snacks" data-category="Ice Cream">
+<select class="product-option" data-main="Snacks" data-category="Ice Cream" data-pack-price="900">
 <option value="">Select Ice Cream</option>
-<option value="Vanilla" data-price="400">Vanilla - ₦400</option>
-<option value="Chocolate" data-price="450">Chocolate - ₦450</option>
+<option value="Vanilla" data-price="400" data-pack-price="900">Vanilla - ₦400 / pack ₦900</option>
+<option value="Chocolate" data-price="450" data-pack-price="1000">Chocolate - ₦450 / pack ₦1000</option>
 </select>
-<input type="number" class="product-quantity" min="0" value="0" placeholder="Qty">
-<input type="number" class="pack" min="0" value="0" placeholder="Pack">
+<label>Qty
+<input type="number" class="product-quantity" min="0" value="0">
+</label>
+<label>Pack
+<input type="number" class="pack" min="0" value="0">
+</label>
 <div class="buttons-container">
 <button type="button" class="add-another">+ Add Another</button>
 </div>
@@ -126,14 +139,18 @@
 <h4>Soft Drinks</h4>
 <div class="varieties">
 <div class="variety">
-<select class="product-option" data-main="Drinks" data-category="Soft Drinks">
+<select class="product-option" data-main="Drinks" data-category="Soft Drinks" data-pack-price="600">
 <option value="">Select Soft Drink</option>
-<option value="Coke" data-price="250">Coke - ₦250</option>
-<option value="Fanta" data-price="250">Fanta - ₦250</option>
-<option value="Pepsi" data-price="250">Pepsi - ₦250</option>
+<option value="Coke" data-price="250" data-pack-price="600">Coke - ₦250 / pack ₦600</option>
+<option value="Fanta" data-price="250" data-pack-price="600">Fanta - ₦250 / pack ₦600</option>
+<option value="Pepsi" data-price="250" data-pack-price="600">Pepsi - ₦250 / pack ₦600</option>
 </select>
-<input type="number" class="product-quantity" min="0" value="0" placeholder="Qty">
-<input type="number" class="pack" min="0" value="0" placeholder="Pack">
+<label>Qty
+<input type="number" class="product-quantity" min="0" value="0">
+</label>
+<label>Pack
+<input type="number" class="pack" min="0" value="0">
+</label>
 <div class="buttons-container">
 <button type="button" class="add-another">+ Add Another</button>
 </div>
@@ -143,14 +160,18 @@
 <h4>Juices</h4>
 <div class="varieties">
 <div class="variety">
-<select class="product-option" data-main="Drinks" data-category="Juices">
+<select class="product-option" data-main="Drinks" data-category="Juices" data-pack-price="1300">
 <option value="">Select Juice</option>
-<option value="Chi Exotic" data-price="600">Chi Exotic - ₦600</option>
-<option value="Hollandia" data-price="700">Hollandia - ₦700</option>
-<option value="Chivita" data-price="650">Chivita - ₦650</option>
+<option value="Chi Exotic" data-price="600" data-pack-price="1300">Chi Exotic - ₦600 / pack ₦1300</option>
+<option value="Hollandia" data-price="700" data-pack-price="1500">Hollandia - ₦700 / pack ₦1500</option>
+<option value="Chivita" data-price="650" data-pack-price="1400">Chivita - ₦650 / pack ₦1400</option>
 </select>
-<input type="number" class="product-quantity" min="0" value="0" placeholder="Qty">
-<input type="number" class="pack" min="0" value="0" placeholder="Pack">
+<label>Qty
+<input type="number" class="product-quantity" min="0" value="0">
+</label>
+<label>Pack
+<input type="number" class="pack" min="0" value="0">
+</label>
 <div class="buttons-container">
 <button type="button" class="add-another">+ Add Another</button>
 </div>
@@ -166,13 +187,17 @@
 <h4>Rice</h4>
 <div class="varieties">
 <div class="variety">
-<select class="product-option" data-main="Provisions" data-category="Rice">
+<select class="product-option" data-main="Provisions" data-category="Rice" data-pack-price="4500">
 <option value="">Select Rice</option>
-<option value="Mama's Pride" data-price="2000">Mama's Pride - ₦2000</option>
-<option value="Golden Penny" data-price="2500">Golden Penny - ₦2500</option>
+<option value="Mama's Pride" data-price="2000" data-pack-price="4500">Mama's Pride - ₦2000 / pack ₦4500</option>
+<option value="Golden Penny" data-price="2500" data-pack-price="5500">Golden Penny - ₦2500 / pack ₦5500</option>
 </select>
-<input type="number" class="product-quantity" min="0" value="0" placeholder="Qty">
-<input type="number" class="pack" min="0" value="0" placeholder="Pack">
+<label>Qty
+<input type="number" class="product-quantity" min="0" value="0">
+</label>
+<label>Pack
+<input type="number" class="pack" min="0" value="0">
+</label>
 <div class="buttons-container">
 <button type="button" class="add-another">+ Add Another</button>
 </div>
@@ -182,13 +207,17 @@
 <h4>Noodles</h4>
 <div class="varieties">
 <div class="variety">
-<select class="product-option" data-main="Provisions" data-category="Noodles">
+<select class="product-option" data-main="Provisions" data-category="Noodles" data-pack-price="600">
 <option value="">Select Noodles</option>
-<option value="Indomie" data-price="300">Indomie - ₦300</option>
-<option value="Maggi" data-price="350">Maggi - ₦350</option>
+<option value="Indomie" data-price="300" data-pack-price="600">Indomie - ₦300 / pack ₦600</option>
+<option value="Spag" data-price="350" data-pack-price="700">Spag - ₦350 / pack ₦700</option>
 </select>
-<input type="number" class="product-quantity" min="0" value="0" placeholder="Qty">
-<input type="number" class="pack" min="0" value="0" placeholder="Pack">
+<label>Qty
+<input type="number" class="product-quantity" min="0" value="0">
+</label>
+<label>Pack
+<input type="number" class="pack" min="0" value="0">
+</label>
 <div class="buttons-container">
 <button type="button" class="add-another">+ Add Another</button>
 </div>
@@ -204,13 +233,17 @@
 <h4>Chicken</h4>
 <div class="varieties">
 <div class="variety">
-<select class="product-option" data-main="Frozen Foods" data-category="Chicken">
+<select class="product-option" data-main="Frozen Foods" data-category="Chicken" data-pack-price="7000">
 <option value="">Select Chicken</option>
-<option value="Whole Chicken" data-price="3500">Whole Chicken - ₦3500</option>
-<option value="Chicken Wings" data-price="1500">Chicken Wings - ₦1500</option>
+<option value="Whole Chicken" data-price="3500" data-pack-price="7000">Whole Chicken - ₦3500 / pack ₦7000</option>
+<option value="Chicken Wings" data-price="1500" data-pack-price="3000">Chicken Wings - ₦1500 / pack ₦3000</option>
 </select>
-<input type="number" class="product-quantity" min="0" value="0" placeholder="Qty">
-<input type="number" class="pack" min="0" value="0" placeholder="Pack">
+<label>Qty
+<input type="number" class="product-quantity" min="0" value="0">
+</label>
+<label>Pack
+<input type="number" class="pack" min="0" value="0">
+</label>
 <div class="buttons-container">
 <button type="button" class="add-another">+ Add Another</button>
 </div>
@@ -220,13 +253,17 @@
 <h4>Fish</h4>
 <div class="varieties">
 <div class="variety">
-<select class="product-option" data-main="Frozen Foods" data-category="Fish">
+<select class="product-option" data-main="Frozen Foods" data-category="Fish" data-pack-price="5000">
 <option value="">Select Fish</option>
-<option value="Tilapia" data-price="2500">Tilapia - ₦2500</option>
-<option value="Catfish" data-price="3000">Catfish - ₦3000</option>
+<option value="Tilapia" data-price="2500" data-pack-price="5000">Tilapia - ₦2500 / pack ₦5000</option>
+<option value="Catfish" data-price="3000" data-pack-price="6000">Catfish - ₦3000 / pack ₦6000</option>
 </select>
-<input type="number" class="product-quantity" min="0" value="0" placeholder="Qty">
-<input type="number" class="pack" min="0" value="0" placeholder="Pack">
+<label>Qty
+<input type="number" class="product-quantity" min="0" value="0">
+</label>
+<label>Pack
+<input type="number" class="pack" min="0" value="0">
+</label>
 <div class="buttons-container">
 <button type="button" class="add-another">+ Add Another</button>
 </div>
@@ -246,28 +283,28 @@
 </footer>
 
 <script>
+// ----- TOTAL CALCULATION -----
 const form = document.getElementById("orderForm");
 const totalSpan = document.getElementById("totalPrice");
 
-// Update total
 function updateTotal() {
     let total = 0;
     document.querySelectorAll(".variety").forEach(v => {
         const select = v.querySelector(".product-option");
         const qty = parseInt(v.querySelector(".product-quantity").value) || 0;
-        const pack = parseInt(v.querySelector(".pack")?.value || 0);
+        const pack = parseInt(v.querySelector(".pack").value) || 0;
         const price = parseInt(select.selectedOptions[0]?.dataset.price || 0);
-        total += (qty + pack) * price;
+        const packPrice = parseInt(select.selectedOptions[0]?.dataset.packPrice || 0);
+        total += (qty * price) + (pack * packPrice);
     });
     totalSpan.textContent = total;
 }
 
-// Attach listeners
+// ----- ADD / REMOVE -----
 function attachListeners(container) {
     container.querySelectorAll(".product-quantity, .pack").forEach(input => input.addEventListener("input", updateTotal));
     container.querySelectorAll(".product-option").forEach(select => select.addEventListener("change", updateTotal));
 
-    // Add Another
     container.querySelectorAll(".add-another").forEach(btn => {
         btn.addEventListener("click", () => {
             const row = btn.closest(".variety");
@@ -278,7 +315,6 @@ function attachListeners(container) {
             clone.querySelector(".pack").value = 0;
             clone.querySelector(".product-option").selectedIndex = 0;
 
-            // Only cloned rows get Remove button
             const removeBtn = document.createElement("button");
             removeBtn.type = "button";
             removeBtn.className = "remove-item";
@@ -287,8 +323,8 @@ function attachListeners(container) {
                 clone.remove();
                 updateTotal();
             });
-            clone.querySelector(".buttons-container").appendChild(removeBtn);
 
+            clone.querySelector(".buttons-container").appendChild(removeBtn);
             parent.appendChild(clone);
             attachListeners(parent);
         });
@@ -298,20 +334,26 @@ function attachListeners(container) {
 attachListeners(document);
 updateTotal();
 
-// WhatsApp submit
+// ----- WHATSAPP ORDER SUBMIT -----
 form.addEventListener("submit", e => {
     e.preventDefault();
     const name = document.getElementById("name").value.trim();
-    let message = `Hello New Era Mart, my name is ${name}. I would like to order:\n`;
+    let message = `Hello New Era Mart, my name is ${name}. I would like to order:\n\n`;
 
     document.querySelectorAll(".variety").forEach(v => {
         const select = v.querySelector(".product-option");
         const qty = parseInt(v.querySelector(".product-quantity").value) || 0;
-        const pack = parseInt(v.querySelector(".pack")?.value || 0);
+        const pack = parseInt(v.querySelector(".pack").value) || 0;
         const option = select.value;
         const price = parseInt(select.selectedOptions[0]?.dataset.price || 0);
-        if ((qty + pack) > 0 && option !== "") {
-            message += `- ${select.dataset.main} (${select.dataset.category}) - ${option} x${qty} units +${pack} packs = ₦${(qty+pack)*price}\n`;
+        const packPrice = parseInt(select.selectedOptions[0]?.dataset.packPrice || 0);
+
+        if ((qty > 0 || pack > 0) && option !== "") {
+            // Build a clean bullet for this item
+            let line = `• ${select.dataset.main} (${select.dataset.category}) - ${option}`;
+            if (qty > 0) line += ` x${qty} unit${qty>1?'s':''} = ₦${qty*price}`;
+            if (pack > 0) line += `${qty>0?', +':''}${pack} pack${pack>1?'s':''} = ₦${pack*packPrice}`;
+            message += line + "\n";
         }
     });
 
@@ -322,4 +364,5 @@ form.addEventListener("submit", e => {
 </script>
 
 </body>
+
 </html>
