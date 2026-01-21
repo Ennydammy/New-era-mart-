@@ -320,15 +320,18 @@ document.addEventListener("click", e => {
 
     // ADD ANOTHER
     if (e.target.classList.contains("add-another")) {
-        const row = e.target.closest(".variety");
-        const parent = row.parentElement;
+    const row = e.target.closest(".variety");
+    const parent = row.parentElement;
 
-        const clone = row.cloneNode(true);
+    const clone = row.cloneNode(true);
 
-        clone.querySelector(".product-quantity").value = 0;
-        clone.querySelector(".pack").value = 0;
-        clone.querySelector(".product-option").selectedIndex = 0;
+    clone.querySelector(".product-quantity").value = 0;
+    clone.querySelector(".pack").value = 0;
+    clone.querySelector(".product-option").selectedIndex = 0;
 
+    // REMOVE "ADD ANOTHER" FROM CLONE
+    const addBtn = clone.querySelector(".add-another");
+    if (addBtn) addBtn.remove();
         // Remove existing remove button if any
         const oldRemove = clone.querySelector(".remove-item");
         if (oldRemove) oldRemove.remove();
