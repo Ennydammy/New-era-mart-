@@ -301,39 +301,56 @@ function updateTotal() {
 }
 
 // ----- ADD / REMOVE -----
-function attachListeners(container) {
-    container.querySelectorAll(".product-quantity, .pack").forEach(input => input.addEventListener("input", updateTotal));
-    container.querySelectorAll(".product-option").forEach(select => select.addEventListener("change", updateTotal));
+// INPUT & SELECT LISTENERS
+document.addEventListener("input", e => {
+    if (e.target.classList.contains("product-quantity") || 
+        e.target.classList.contains("pack")) {
+        updateTotal();
+    }
+});
 
-    container.querySelectorAll(".add-another").forEach(btn => {
-        btn.addEventListener("click", () => {
-            const row = btn.closest(".variety");
-            const parent = row.parentElement;
-            const clone = row.cloneNode(true);
+document.addEventListener("change", e => {
+    if (e.target.classList.contains("product-option")) {
+        updateTotal();
+    }
+});
 
-            clone.querySelector(".product-quantity").value = 0;
-            clone.querySelector(".pack").value = 0;
-            clone.querySelector(".product-option").selectedIndex = 0;
+// ADD / REMOVE (NO MULTIPLY BUG)
+document.addEventListener("click", e => {
 
-            const removeBtn = document.createElement("button");
-            removeBtn.type = "button";
-            removeBtn.className = "remove-item";
-            removeBtn.textContent = "Remove";
-            removeBtn.addEventListener("click", () => {
-                clone.remove();
-                updateTotal();
-            });
+    // ADD ANOTHER
+    if (e.target.classList.contains("add-another")) {
+        const row = e.target.closest(".variety");
+        const parent = row.parentElement;
 
-            clone.querySelector(".buttons-container").appendChild(removeBtn);
-            parent.appendChild(clone);
-            attachListeners(parent);
-        });
-    });
-}
+        const clone = row.cloneNode(true);
 
-attachListeners(document);
-updateTotal();
+        clone.querySelector(".product-quantity").value = 0;
+        clone.querySelector(".pack").value = 0;
+        clone.querySelector(".product-option").selectedIndex = 0;
 
+        // Remove existing remove button if any
+        const oldRemove = clone.querySelector(".remove-item");
+        if (oldRemove) oldRemove.remove();
+
+        // Add fresh remove button
+        const removeBtn = document.createElement("button");
+        removeBtn.type = "button";
+        removeBtn.className = "remove-item";
+        removeBtn.textContent = "Remove";
+
+        clone.querySelector(".buttons-container").appendChild(removeBtn);
+        parent.appendChild(clone);
+
+        updateTotal();
+    }
+
+    // REMOVE
+    if (e.target.classList.contains("remove-item")) {
+        e.target.closest(".variety").remove();
+        updateTotal();
+    }
+});
 // ----- WHATSAPP ORDER SUBMIT -----
 form.addEventListener("submit", e => {
     e.preventDefault();
